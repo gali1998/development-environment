@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% if (htmlWebpackPlugin.options.TrackJSToken) { %>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS && TrackJS.install({
+        token: "a359e604e8f14587bc1fe3e0a2708e6b"
+        // for more configuration options, see https://docs.trackjs.com
+      });
+    </script>
+<% } %>
   <meta charset="UTF-8">
 </head>
 <body>
-  <h1>Hello world!</h1>
-  <script src="bundle.js"></script>
+  <h1>Users</h1>
+  <table>
+    <thead>
+      <th>&nbsp;</th>
+      <th>Id</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <tbody id="users">
+
+      </tbody>
+    </thead>
+  </table>
 </body>
 </html>
