@@ -1,11 +1,12 @@
-import express from 'express';
+var express = require('express');
+var cors = require ('cors');
 import path from 'path';
-import open from 'open';
 import compression from 'compression';
 
-const port = 3000;
 const app = express();
+app.use(cors());
 /* eslint-disable no-console */
+app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static('dist'));
 app.use(compression());
@@ -22,10 +23,8 @@ app.get('/users', function(req, res) {
   ]);
 });
 
-app.listen(port, function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    open('http://localhost:' + port);
-  }
+app.listen(app.get('port'), function() {
+  console.log("app is running on port " + app.get('port'));
 });
+
+
